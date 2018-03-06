@@ -1,0 +1,33 @@
+page-prices {
+  .scroll-content {
+    background-color: map-get($colors, light);
+  }
+
+  ion-card-header {
+    font-weight: bold;
+  }
+  .ad{
+    color: white;
+    background-color: #ffc020;
+    width: 36px;
+    font-weight: 700;
+    line-height: 10px;
+    font-size: 12px;
+    height: 20px;
+    padding: 5px 10px;
+    border-radius: 2px;
+  }
+  .add {
+    display: inline-block;
+    font-size: 40px;
+    padding:8px;
+  }
+  .not{
+    padding-left: 26px;
+  }
+
+}
+
+ion-app.md [padding] .scroll-content {
+  padding: 0px;
+}

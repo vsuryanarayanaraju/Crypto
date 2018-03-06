@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-navbar>
+      <ion-title>accounts</ion-title>
+    </ion-navbar>
+  </ion-toolbar>
+  <div>
+    <ion-segment [(ngModel)]="switchcase" color="primary">
+      <ion-segment-button value="Details">
+        Details
+      </ion-segment-button>
+      <ion-segment-button value="Holdings">
+        Holdings
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-header>
+
+<ion-content padding>
+  <div [ngSwitch]="switchcase">
+    <ion-list *ngSwitchCase="'Details'">
+      <ion-card [style.display]="switchcase == 'Details' ? 'block' : 'none'">
+        <ion-row>
+          <ion-col col-6>
+            <ion-select interface="popover" [(ngModel)]="exchangeData" (ngModelChange)="changeExchange($event)">
+              <ion-option *ngFor="let employee of exchange" [value]="employee">{{employee.MARKET}}</ion-option>
+            </ion-select>
+          </ion-col>
+          <ion-col col-6>
+          <p>{{exchangeData.PRICE}}</p>
+          </ion-col>
+        </ion-row>
+        <canvas id="myChart" style='width:100%'></canvas>
+        <ion-grid>
+          <ion-row>
+            <h6>24hr Market Data</h6>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+              <h6>High</h6>
+              <p>$ {{exchangeData.HIGH24HOUR}}</p>
+            </ion-col>
+            <ion-col col-6>
+              <h6>Volume</h6>
+              <p>$ {{exchangeData.VOLUME24HOURTO}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+              <h6>Low</h6>
+              <p>$ {{exchangeData.LOW24HOUR}}</p>
+            </ion-col>
+            <ion-col col-6>
+              <h6>Change</h6>
+              <p>{{exchangeData.CHANGEPCT24HOUR}}
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <hr>
+        <ion-grid>
+          <ion-row>
+            <h5>Holdings</h5>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>
+              <h6>Value</h6>
+              <p>$.000100244</p>
+            </ion-col>
+            <ion-col col-4>
+              <h6>Quantity</h6>
+              <p>$.000100244</p>
+            </ion-col>
+            <ion-col col-4>
+              <h6>24hr</h6>
+              <p>-3.50%</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ion-list>
+    <ion-list *ngSwitchCase="'Holdings'">
+
+      <ion-card>
+        <ion-item>
+          <ion-row>
+            <ion-col col col-8>Trading Pair</ion-col>
+            <ion-col col col-4>{{param_symbol}}/BTC</ion-col>
+          </ion-row>
+        </ion-item>
+        <ion-item>
+          <ion-label>Exchanges</ion-label>
+          <ion-select interface="popover" [(ngModel)]="exchangeData" (ngModelChange)="changeExchange($event)">
+            <ion-option *ngFor="let employee of exchange" [value]="employee">{{employee.MARKET}}</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-grid no-padding radio-group>
+          <ion-row no-lines>
+            <ion-col col-4 no-padding>
+              <ion-item no-lines no-padding>
+                <ion-label>BUY</ion-label>
+                <ion-radio color="dark" value="BUY" item-left>BUY</ion-radio>
+              </ion-item>
+            </ion-col>
+            <ion-col col-4 no-padding>
+              <ion-item no-lines no-padding>
+                <ion-label>SELL</ion-label>
+                <ion-radio color="dark" value="SELL" item-left>SELL</ion-radio>
+              </ion-item>
+            </ion-col>
+
+            <ion-col col-4 no-padding>
+              <ion-item no-lines no-padding>
+                <ion-label>WATCH ONLY</ion-label>
+                <ion-radio color="dark" value="WATCH ONLY" item-left>WATCH ONLY</ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+          <ion-item>
+            <ion-label fixed item-left><b>Above</b></ion-label>
+            <ion-input type="number"  placeholder="{{coinabove}}" id="above" (focus)="onFocus($event,coinabove)"></ion-input>
+          </ion-item>
+          <ion-item no-lines >
+            <ion-label fixed item-left  style="color:black"><b>Current</b></ion-label>
+            <ion-input type="number" item-right   [(ngModel)]="coinprice"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed item-left><b>Below</b></ion-label>
+            <ion-input type="number" placeholder="{{coinbelow}}" id="below" (focusin)="focusin($event,coinbelow)"></ion-input>
+          </ion-item>
+        <ion-item>
+          <ion-label fixed item-left><b>Enter Quantity</b></ion-label>
+          <ion-input type="number" placeholder="Enter Quantity " [(ngModel)]="quantity"></ion-input>
+        </ion-item>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>

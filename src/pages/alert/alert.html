@@ -1,0 +1,113 @@
+<!--
+  Generated template for the AlertPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left>
+      <ion-navbar>
+        <ion-title>NEW ALERT</ion-title>
+      </ion-navbar>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button item-right (click)="showPrompt()">
+        <ion-icon name=""></ion-icon>
+        Save
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-row>
+      <ion-col col col-8>Trading Pair</ion-col>
+      <ion-col col col-4>XRP/BTC</ion-col>
+    </ion-row>
+  </ion-item>
+
+  <ion-item no-lines><h2> SET THERSHOLD TARGETS</h2></ion-item>
+
+  <ion-item>
+    <ion-label fixed item-left><b>Above</b></ion-label>
+    <ion-input type="number"  placeholder="{{coinabove}}" id="above" (focus)="onFocus($event,coinabove)"></ion-input>
+  </ion-item>
+  <ion-item no-lines >
+    <ion-label fixed item-left  style="color:black"><b>Current</b></ion-label>
+    <ion-input type="number" item-right   [(ngModel)]="coinprice"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed item-left><b>Below</b></ion-label>
+    <ion-input type="number" placeholder="{{coinbelow}}" id="below" (focusin)="focusin($event,coinbelow)"></ion-input>
+  </ion-item>
+
+  <ion-grid  no-padding radio-group>
+    <ion-row>
+      <ion-item no-lines>
+        <h2> ALERT FERQUNECY</h2>
+      </ion-item>
+    </ion-row>
+    <ion-row no-lines >
+      <ion-col col-6 no-padding >
+        <ion-item no-lines no-padding>
+          <ion-label>1 TIME</ion-label>
+          <ion-radio color="dark" value="1 TIME" item-left> 1 TIME</ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6 no-padding>
+        <ion-item no-lines no-padding>
+          <ion-label > PERSISTENT</ion-label>
+          <ion-radio color="dark" value="PERSISTENT" item-left></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+
+<!--
+  Generated template for the AlertPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>alert</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>Above</ion-label>
+      <ion-input type="number"  placeholder="{{coinabove}}" id="above" (focus)="onFocus($event,coinabove)"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>current</ion-label>
+      <ion-input type="number" [(ngModel)]="coinprice"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Below</ion-label>
+      <ion-input type="number" placeholder="{{coinbelow}}" id="below" (focusin)="focusin($event,coinbelow)"></ion-input>
+    </ion-item>
+
+  </ion-list >
+  <button (click)="getalert()">save</button>
+</ion-content>
+-->
+
+
